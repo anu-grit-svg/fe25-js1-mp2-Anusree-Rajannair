@@ -1,0 +1,198 @@
+* { box-sizing: border-box; }
+
+:root{
+  --bg1:#4b2bd6;
+  --bg2:#2a1a9c;
+  --panel:rgba(10,12,20,0.78);
+  --panel2:rgba(255,255,255,0.06);
+  --text:rgba(255,255,255,0.92);
+  --muted:rgba(255,255,255,0.65);
+  --pink:#ff2a78;
+  --green:#9cff00;
+}
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:var(--text);
+}
+
+.bg{
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:24px;
+  background:
+    radial-gradient(700px 420px at 20% 15%, rgba(255,42,120,0.22), transparent 60%),
+    radial-gradient(600px 400px at 85% 40%, rgba(156,255,0,0.14), transparent 62%),
+    linear-gradient(160deg,var(--bg1),var(--bg2));
+}
+
+.phone{
+  width:min(420px,92vw);
+  padding:18px;
+  border-radius:28px;
+  background:rgba(0,0,0,0.22);
+  box-shadow:0 18px 60px rgba(0,0,0,0.45);
+}
+
+.logo{
+  margin:0 0 12px;
+  font-size:38px;
+  font-weight:900;
+}
+
+.logoPink{color:var(--pink);}
+.logoWhite{color:#fff;}
+.logoGreen{color:var(--green);}
+
+.startRow{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:10px;
+  align-items:center;
+}
+
+.playerLabel{
+  font-size:16px;
+  color:rgba(255,255,255,0.85);
+}
+
+#playerName{
+  padding:12px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.2);
+  background:rgba(0,0,0,0.35);
+  color:white;
+}
+
+.btn{
+  padding:12px;
+  border-radius:16px;
+  border:none;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.btnPrimary{
+  grid-column: 1 / -1;
+  background:var(--green);
+  color:black;
+}
+
+.btnGhost{
+  background:rgba(0,0,0,0.4);
+  color:white;
+}
+
+.btn:disabled{
+  opacity:0.4;
+  cursor:not-allowed;
+}
+
+.screen{
+  margin-top:14px;
+  padding:18px;
+  border-radius:22px;
+  background:var(--panel);
+}
+
+.diceCircle{
+  width:150px;
+  height:150px;
+  margin:0 auto 16px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:rgba(0,0,0,0.4);
+  gap:8px;
+}
+
+.diceLabel{
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* ===== REAL DICE (PIPS) ===== */
+.dice{
+  width:80px;
+  height:80px;
+  background:#f5f5f5;
+  border-radius:16px;
+  position:relative;
+  box-shadow:
+    inset -6px -6px 12px rgba(0,0,0,0.25),
+    inset 6px 6px 12px rgba(255,255,255,0.6);
+}
+
+/* dot */
+.pip{
+  width:12px;
+  height:12px;
+  background:#111;
+  border-radius:50%;
+  position:absolute;
+  opacity:0; /* hidden by default */
+}
+
+/* positions */
+.p1 { top:12px; left:12px; }
+.p2 { top:12px; right:12px; }
+.p3 { top:34px; left:34px; }     /* center */
+.p4 { bottom:12px; left:12px; }
+.p5 { bottom:12px; right:12px; }
+.p6 { top:34px; left:12px; }
+.p7 { top:34px; right:12px; }
+
+/* faces */
+.face-1 .p3 { opacity:1; }
+
+.face-2 .p1, .face-2 .p5 { opacity:1; }
+
+.face-3 .p1, .face-3 .p3, .face-3 .p5 { opacity:1; }
+
+.face-4 .p1, .face-4 .p2, .face-4 .p4, .face-4 .p5 { opacity:1; }
+
+.face-5 .p1, .face-5 .p2, .face-5 .p3, .face-5 .p4, .face-5 .p5 { opacity:1; }
+
+.face-6 .p1, .face-6 .p2, .face-6 .p4, .face-6 .p5, .face-6 .p6, .face-6 .p7 { opacity:1; }
+
+/* stats */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-bottom:14px;
+}
+
+.statCard{
+  background:var(--panel2);
+  border-radius:16px;
+  padding:10px;
+  text-align:center;
+}
+
+.statTitle{
+  font-size:12px;
+  color:var(--muted);
+}
+
+.statValue{
+  font-size:22px;
+  font-weight:800;
+}
+
+.actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-bottom:12px;
+}
+
+.message{
+  padding:10px;
+  border-radius:14px;
+  background:rgba(0,0,0,0.3);
+  min-height:40px;
+}
