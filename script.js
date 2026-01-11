@@ -1,4 +1,3 @@
-// Grab elements
 const startForm = document.getElementById("startForm");
 const playerNameInput = document.getElementById("playerName");
 const startBtn = document.getElementById("startBtn");
@@ -11,44 +10,38 @@ const totalScoreEl = document.getElementById("totalScore");
 const roundsEl = document.getElementById("rounds");
 const messageEl = document.getElementById("message");
 
-// Game state
-let playerName = "";
 let roundScore = 0;
 let totalScore = 0;
 let roundsPlayed = 0;
 let isGameRunning = false;
+let playerName = "";
 
-// Render UI
 function render() {
   roundScoreEl.textContent = roundScore;
   totalScoreEl.textContent = totalScore;
   roundsEl.textContent = roundsPlayed;
-
   rollBtn.disabled = !isGameRunning;
   freezeBtn.disabled = !isGameRunning;
 }
 
-// Dice helpers
-function resetDiceFace() {
+function resetDice() {
   diceEl.className = "dice";
 }
 
 function setDiceFace(value) {
-  resetDiceFace();
+  resetDice();
   diceEl.classList.add(`face-${value}`);
 }
 
-// Initial state
 messageEl.textContent = "Enter your name and press Start Game.";
 setDiceFace(1);
 render();
 
-// ✅ FORM SUBMIT HANDLER (feedback fix)
+/* REQUIRED FIX: submit listener on form */
 startForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const name = playerNameInput.value.trim();
-
   if (name === "") {
     messageEl.textContent = "Please enter your name.";
     return;
@@ -68,7 +61,6 @@ startForm.addEventListener("submit", (event) => {
   render();
 });
 
-// Roll
 rollBtn.addEventListener("click", () => {
   if (!isGameRunning) return;
 
@@ -87,7 +79,6 @@ rollBtn.addEventListener("click", () => {
   render();
 });
 
-// Freeze
 freezeBtn.addEventListener("click", () => {
   if (!isGameRunning) return;
 
@@ -99,7 +90,6 @@ freezeBtn.addEventListener("click", () => {
     isGameRunning = false;
     startBtn.disabled = false;
     playerNameInput.disabled = false;
-
     messageEl.textContent = `🎉 You won, ${playerName}! You finished in ${roundsPlayed} rounds.`;
     render();
     return;
