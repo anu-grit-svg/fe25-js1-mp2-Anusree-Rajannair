@@ -1,72 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pig Dice Game</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pig Dice Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-  <body>
-    <div class="bg">
-      <div class="phone">
-        <header class="top">
-          <h1 class="logo">
-            <span class="logoPink">PIG</span>
-            <span class="logoWhite">DICE</span>
-            <span class="logoGreen">●</span>
-          </h1>
+<body>
+  <div class="bg">
+    <div class="phone">
+      <header class="top">
+        <h1 class="logo">
+          <span class="logoPink">PIG</span>
+          <span class="logoWhite">DICE</span>
+          <span class="logoGreen">●</span>
+        </h1>
 
-          <div class="startRow">
-            <label class="playerLabel" for="playerName">Player name</label>
-            <input type="text" id="playerName" placeholder="Your name" />
-            <button id="startBtn" class="btn btnPrimary">Start</button>
+        <!-- ✅ FORM (required by feedback) -->
+        <form id="startForm" class="startRow">
+          <label for="playerName">Player name</label>
+          <input type="text" id="playerName" placeholder="Your name" />
+          <button type="submit" id="startBtn" class="btn btnPrimary">
+            Start
+          </button>
+        </form>
+      </header>
+
+      <main class="screen" id="game">
+        <div class="diceCircle">
+          <div class="diceLabel">DICE</div>
+
+          <!-- Real dice -->
+          <div class="dice" id="dice">
+            <span class="pip p1"></span>
+            <span class="pip p2"></span>
+            <span class="pip p3"></span>
+            <span class="pip p4"></span>
+            <span class="pip p5"></span>
+            <span class="pip p6"></span>
+            <span class="pip p7"></span>
           </div>
-        </header>
+        </div>
 
-        <main class="screen" id="game">
-          <div class="diceCircle">
-            <div class="diceLabel">DICE</div>
-
-            <!-- REAL DICE (pips) -->
-            <div class="dice" id="dice">
-              <span class="pip p1"></span>
-              <span class="pip p2"></span>
-              <span class="pip p3"></span>
-              <span class="pip p4"></span>
-              <span class="pip p5"></span>
-              <span class="pip p6"></span>
-              <span class="pip p7"></span>
-            </div>
-          </div>
-
-          <div class="stats">
-            <div class="statCard">
-              <div class="statTitle">Round</div>
-              <div class="statValue" id="roundScore">0</div>
-            </div>
-
-            <div class="statCard">
-              <div class="statTitle">Total</div>
-              <div class="statValue" id="totalScore">0</div>
-            </div>
-
-            <div class="statCard">
-              <div class="statTitle">Rounds</div>
-              <div class="statValue" id="rounds">0</div>
-            </div>
+        <div class="stats">
+          <div class="statCard">
+            <div class="statTitle">Round</div>
+            <div class="statValue" id="roundScore">0</div>
           </div>
 
-          <div class="actions">
-            <button id="rollBtn" class="btn btnGhost">Roll</button>
-            <button id="freezeBtn" class="btn btnGhost">Freeze</button>
+          <div class="statCard">
+            <div class="statTitle">Total</div>
+            <div class="statValue" id="totalScore">0</div>
           </div>
 
-          <p id="message" class="message"></p>
-        </main>
-      </div>
+          <div class="statCard">
+            <div class="statTitle">Rounds</div>
+            <div class="statValue" id="rounds">0</div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="rollBtn" class="btn btnGhost">Roll</button>
+          <button id="freezeBtn" class="btn btnGhost">Freeze</button>
+        </div>
+
+        <p id="message" class="message"></p>
+      </main>
     </div>
+  </div>
 
-    <script src="script.js"></script>
-  </body>
+  <script src="script.js"></script>
+</body>
 </html>
