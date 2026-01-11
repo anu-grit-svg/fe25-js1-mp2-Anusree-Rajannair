@@ -17,7 +17,7 @@
           <span class="logoGreen">●</span>
         </h1>
 
-        <!-- ✅ FORM (required by feedback) -->
+        <!-- REQUIRED FIX: form -->
         <form id="startForm" class="startRow">
           <label for="playerName">Player name</label>
           <input type="text" id="playerName" placeholder="Your name" />
@@ -30,8 +30,6 @@
       <main class="screen" id="game">
         <div class="diceCircle">
           <div class="diceLabel">DICE</div>
-
-          <!-- Real dice -->
           <div class="dice" id="dice">
             <span class="pip p1"></span>
             <span class="pip p2"></span>
@@ -48,12 +46,10 @@
             <div class="statTitle">Round</div>
             <div class="statValue" id="roundScore">0</div>
           </div>
-
           <div class="statCard">
             <div class="statTitle">Total</div>
             <div class="statValue" id="totalScore">0</div>
           </div>
-
           <div class="statCard">
             <div class="statTitle">Rounds</div>
             <div class="statValue" id="rounds">0</div>
