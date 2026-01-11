@@ -1,4 +1,5 @@
 // Grab elements
+const startForm = document.getElementById("startForm");
 const playerNameInput = document.getElementById("playerName");
 const startBtn = document.getElementById("startBtn");
 const rollBtn = document.getElementById("rollBtn");
@@ -29,7 +30,7 @@ function render() {
 
 // Dice helpers
 function resetDiceFace() {
-  diceEl.className = "dice"; // removes face-x classes
+  diceEl.className = "dice";
 }
 
 function setDiceFace(value) {
@@ -39,14 +40,13 @@ function setDiceFace(value) {
 
 // Initial state
 messageEl.textContent = "Enter your name and press Start Game.";
-
-// OPTION 3: show an idle dice face (1) even before rolling
 setDiceFace(1);
-
 render();
 
-// Start game
-startBtn.addEventListener("click", () => {
+// ✅ FORM SUBMIT HANDLER (feedback fix)
+startForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
   const name = playerNameInput.value.trim();
 
   if (name === "") {
@@ -54,31 +54,25 @@ startBtn.addEventListener("click", () => {
     return;
   }
 
-  // reset game
   playerName = name;
   roundScore = 0;
   totalScore = 0;
   roundsPlayed = 1;
   isGameRunning = true;
 
-  // lock name + start while playing
   startBtn.disabled = true;
   playerNameInput.disabled = true;
 
-  // OPTION 3: reset to idle face
   setDiceFace(1);
-
   messageEl.textContent = `Game started! Good luck, ${playerName}.`;
   render();
 });
 
-// Roll dice
+// Roll
 rollBtn.addEventListener("click", () => {
   if (!isGameRunning) return;
 
   const dice = Math.floor(Math.random() * 6) + 1;
-
-  // show rolled face
   setDiceFace(dice);
 
   if (dice === 1) {
@@ -99,15 +93,10 @@ freezeBtn.addEventListener("click", () => {
 
   totalScore += roundScore;
   roundScore = 0;
-
-  // OPTION 3: go back to idle face after freezing
   setDiceFace(1);
 
-  // win check
   if (totalScore >= 100) {
     isGameRunning = false;
-
-    // allow restart
     startBtn.disabled = false;
     playerNameInput.disabled = false;
 
